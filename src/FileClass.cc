@@ -26,6 +26,6 @@ void File::ChangeName(std::regex const &regular_expression, std::string const &r
     std::filesystem::rename(old_path, new_path);
     file_path_ = new_path_name;
   } catch (...) {
-    std::cerr << "Error desconocido" << std::endl;
+    std::cerr << "Error desconocido. New path: " << new_path << ". Old path: " << old_path << std::endl;
   }
 }

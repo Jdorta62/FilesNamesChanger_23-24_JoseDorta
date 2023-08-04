@@ -14,7 +14,9 @@ std::vector<std::string> Folder::List() {
   std::vector<std::string> list_result;
   for (const auto& entry : std::filesystem::directory_iterator(folder_path_)) {
     if (std::filesystem::is_regular_file(entry)) {
-      list_result.push_back(entry.path().filename().string());
+      // Convertir el nombre del archivo a secuencia UTF-8 antes de almacenarlo en la lista
+      std::string filename_utf8 = entry.path().filename().u8string();
+      list_result.push_back(filename_utf8);
     }
   }
   return list_result;
